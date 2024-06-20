@@ -1,0 +1,364 @@
+/* IMPORTANTE
+El enfoque utilizado en el CSS es el de ir de mas general(arriba) a mas específico(abajo).*/
+
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+
+/* *GLOBAL* */
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+/* *SCROLL SNAP* */
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+/*Los dos bloques anteriores permiten luego poder hacer un uso correcto y sencillo de la medida rem*/
+/*Esto permite que el diseño de la web se adapte a los muy diferentes tipos de pantallas que se 
+utilizan en los dispositivos hoy en día.*/
+
+
+
+/*Las clases contenedor incluyendo todos los margin y nagecacion-principal aparecen en el video 29.*/
+.contenedor {
+    max-width: 80rem;
+    
+    /*Lo de abajo, es decir, el margin: 0 auto 0 auto;, equivale al original:
+
+    width: 120rem;
+    margin-top: 0;          Son las 0:00 en el reloj.
+    margin-right: auto;     Son las 3:00 en el reloj.
+    margin-bottom: 0;       Son las 6:00 en el reloj.
+    margin-left: auto;      Son las 9:00 en el reloj.
+
+    La colocación de los elementos se corresponde con la posición de un reloj analógico (regla nemotécnica)
+
+    Además, podemos eliminar 2 de los valores ya que css entiende a que te refieres cuando se repiten los valores,
+    por lo que interpretará que el primero corresponde con ARRIBA y ABAJO y eel segundo valor con DERECHA e IZQUIERDA.
+    POR LO QUE: margin: 0 auto 0 auto; = margin: 0 auto;
+    */
+    margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*Lo de abajo h1, h2 y h3 son las relgas generales para la tipografía de la web.*/
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* *REDUCCION TAMANO LETRAS ANEXO A NOMBRE-TITULO* */
+.titulo span{
+    font-size: 2rem;
+}
+/*Es mejor usar siempre clases en lugar de id´s*/
+
+/** UTILIDADES **/
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    
+    /*padding: 1rem; equivale a padding: 1rem 1rem 1rem 1rem; en cada dirección.*/
+    /*VIDEO 32 aquí se explica como separar los elementos del menú de navegación superior.*/
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/*Video 36. @media, hereda de .navegacion-principal y ahor así cuando llega a mas de 768 aplica row*/
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    /*No es necesario especificar que es display: inline ya que es el valor por defecto. Video: 30, parte final.
+    En el curso borran esta parte.*/
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+/*TODO LO DE DEBAJO SE VE EN EL VIDEO 34*/
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/*En el video 35 se explica como automatizar la creación de Media Queri con la creación de css.josn*/
+
+/*@media (min-width: 480px) {
+    h1{
+
+    }
+}
+
+@media (min-width: 768px) {
+    h1{
+
+    }
+}
+*/
+
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba( 0,0,0, .7 );
+    background-color: rgb( 0 0 0 /70% );
+    width: 100%;
+    height: 100%;
+
+    /*Este código sirve para alinear tanto horizontal como verticalmente, puede ser reutilizado para todo.*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+/*VIDEO 40*/
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* SERVICIOS */
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        
+        /*
+        Version básica de como colocar un grid con filas y columnas con dimensiones definidads:
+        grid-template-columns: 300px 300px;
+        grid-template-rows: 200px 800px;
+    
+    
+        Existe una versión mas simplificada de poner lo anterior:
+        grid: 200px 800px / 300px 300px;
+        Como se puede ver, primero van las rows, luego separado por / y después las columns.
+        */
+    
+        grid-template-columns: repeat(3, 1fr);
+        /*Existen otras formas de hacer lo anterior, separar en 3 partes iguales algo:display:
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 33.3%  33.3% 33.3%;
+        grid-template-columns: 1fr 1fr 1fr;
+        
+        fr es una medida que se puede nombrar como fracción.
+        */
+
+        /*Separación entre las columnas creadas con grid:*/
+        column-gap: 1rem;
+
+    }
+}
+
+
+
+/*
+EXPLICACIÓN DE CUANDO SE DEBE UTILZAR 
+
+FLEXBOX:
+Para la alineación o distribución de los elementos que estarán dentro de contenedores.
+Por ejemplo: Una barra de navegación.
+
+CSS GRID:
+Para definir el Layout de tu situo web, como pudeden ser las clumnas o contenedores de elementos.
+Por ejemplo: Cuando tienes elementos que debes distribuir en diferentes áreas.
+
+FLOATS:
+No usarlo nunca.
+*/
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* *CONTACTO* */
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*Lo que va a hacer es utilizar el valor mas pequeño de los indicados: 60rem o 100%. Esta función ahorra poner Media Queris para hacerlo responsive.*/
+    /*60rem = 600px*/
+
+    margin: 0 auto; /*Utilizar margin en elementos como formularios y cuyo padre no es un display flex. */
+
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario  legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+/*ADAPTANDO los diferentes campos del formulario. Video 50.*/
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;   
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 17rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.enviar .boton {
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+}
