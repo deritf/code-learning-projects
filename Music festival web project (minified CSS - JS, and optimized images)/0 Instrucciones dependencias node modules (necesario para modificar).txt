@@ -1,0 +1,5 @@
+Para poder seguir haciendo modificacions necesitarás la carpeta node_modules.
+Para reinstalarla, tienes que ir al terminal en VS Code y escribir: npm i
+Con esto ya estará disponible la carpeta y su contendio, y por tanto ya podras utilizar los comandos de gulp.
+Para activar los watch de SASS escribe en el termina: npm run dev
+Cuando quieras salir y liberar de esta tarea el terminal, CTRL+C y luego S.
